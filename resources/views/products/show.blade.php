@@ -44,7 +44,7 @@
                                                 <button type="submit" class="inline-flex items-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Delete</button>
                                             </form>
                                         @endif
-                                        @if(Auth::user()->role === 'admin' || Auth::user()->role === 'user')
+                                        @if(Auth::user()->role === 'user')
                                             <form action="{{ route('products.transaction', $product->id) }}" method="POST" class="inline-block ml-2">
                                                 @csrf
                                                 <input type="number" name="quantity" value="1" min="1" max="{{ $product->quantity }}" required class="w-16 px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" onchange="calculateTotal()" id="quantityInput">
