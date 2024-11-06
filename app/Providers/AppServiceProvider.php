@@ -23,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if (app()->environment('production')) {
+            \URL::forceScheme('https');
+        }
         // Make the authenticated user available globally
         View::composer('*', function ($view) {
             $view->with('authUser', Auth::user());
