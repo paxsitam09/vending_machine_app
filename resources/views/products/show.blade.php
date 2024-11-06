@@ -23,7 +23,7 @@
                                 </tr>
                                 <tr>
                                     <th class="px-6 py-4 text-left text-sm font-medium text-gray-600">Price</th>
-                                    <td class="px-6 py-4 text-sm text-gray-900">{{ $product->price }} USD</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">{{ rtrim(rtrim(number_format($product->price, 3), '0'), '.') }} USD</td>
                                 </tr>
                                 <tr>
                                     <th class="px-6 py-4 text-left text-sm font-medium text-gray-600">Quantity</th>
@@ -31,7 +31,7 @@
                                 </tr>
                                 <tr>
                                     <th class="px-6 py-4 text-left text-sm font-medium text-gray-600">Total</th>
-                                    <td class="px-6 py-4 text-sm text-gray-900" id="totalCost">{{ $product->price }}</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900" id="totalCost">{{ rtrim(rtrim(number_format($product->price, 3), '0'), '.') }}</td>
                                 </tr>
                                 <tr>
                                     <th class="px-6 py-4 text-left text-sm font-medium text-gray-600">Actions</th>
@@ -63,7 +63,7 @@
                             const quantity = document.getElementById('quantityInput').value;
                             const price = {{ $product->price }};
                             const total = quantity * price;
-                            document.getElementById('totalCost').innerText = total + ' USD';
+                            document.getElementById('totalCost').innerText = parseFloat(total.toFixed(3)) + ' USD';
                         }
                     </script>
 
